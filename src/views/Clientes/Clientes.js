@@ -1,5 +1,4 @@
-import * as net from '../../data/index'  
-import Loader from '../../components/Loader.vue' 
+import * as net from '../../data/index'   
 
 export default{
     data(){
@@ -65,8 +64,5 @@ export default{
             }
             
         }
-    },
-    components:{
-        Loader
-    }
+    } 
 }

@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Inicio from '../views/Inicio.vue'
-import Login from '../views/Login.vue' 
+import Login from '../views/Login/Login.vue' 
+import Recovery from '../views/Login/Recovery.vue' 
 import Clientes from '../views/Clientes/Clientes.vue'
 import Create from '../views/Clientes/Create.vue'
 import Editar from '../views/Clientes/Editar.vue'
@@ -52,11 +53,16 @@ const routes = [
         path: '/Usuarios',
         name: 'Usuarios',
         component: Usuarios
-    },
+    },  
     {
         path: '*',
         name: 'error404',
         component: error404
+    }, 
+    {
+        path: '/Recuperar/Contrasena',
+        name: 'Recovery',
+        component: Recovery
     }
 ]
 

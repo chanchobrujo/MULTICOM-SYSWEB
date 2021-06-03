@@ -7,7 +7,6 @@ export default{
         }
     },
     created: function () {
-        if (this.$global.token == null || this.$global.user == null) net.redirectPage("/Login")
-        console.log(this.$global.user.authorities[0].authority);
+        if (this.$global.token == null || this.$global.user == null) net.redirectPage("/Login") 
     }
 }
