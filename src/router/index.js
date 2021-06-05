@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Inicio from '../views/Inicio.vue'
 import Login from '../views/Login/Login.vue' 
+import Profile from '../views/Profile/Perfil.vue' 
 import Recovery from '../views/Login/Recovery.vue' 
 import Clientes from '../views/Clientes/Clientes.vue'
 import Create from '../views/Clientes/Create.vue'
@@ -60,9 +61,14 @@ const routes = [
         component: error404
     }, 
     {
-        path: '/Recuperar/Contrasena',
+        path: '/Recuperar/Contrasena',  
         name: 'Recovery',
         component: Recovery
+    }, 
+    {
+        path: '/Perfil',  
+        name: 'Profile',
+        component: Profile
     }
 ]
 

@@ -1,14 +1,16 @@
 <template>
-    <v-app>
+    <v-app>  
+        <v-navigation-drawer  v-model="drawer" absolute temporary v-if="($global.token != null && $global.user != null)">
+            <profile/>
+        </v-navigation-drawer>
+        
         <navbar/>
             
         <v-main>
+            <v-app-bar-nav-icon @click="drawer = true" v-if="($global.token != null && $global.user != null)"></v-app-bar-nav-icon>
             <router-view/> 
-        </v-main>
+        </v-main> 
 
-        <!--<v-footer app color="primary">-->
-            
-        <!--</v-footer>-->
     </v-app>
 </template>
 
@@ -17,19 +19,22 @@
 </style>
 
 <script>
-import navbar from '../src/components/navBar.vue'
+import navbar from '../src/components/navBar.vue' 
+import profile from '../src/components/Profile.vue' 
 
 export default {
     name: 'App',
 
     data: () => ({ 
+        drawer: false 
         
     }),
     mounted(){  
 
     },
     components:{ 
-        navbar
+        navbar,  
+        profile
     }
 };
 </script>

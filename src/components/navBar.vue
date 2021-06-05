@@ -2,11 +2,11 @@
     <v-app-bar app color="primary" dark dense>
         <div class="d-flex align-center">
             <v-img alt="Vuetify Logo" class="shrink mr-2" contain src="../assets/logo.png" transition="scale-transition" width="40" /> 
-            <div  class="font-weight-black headline shrink mt-1 hidden-sm-and-down secondary--text pr-5" contain min-width="100">MULTICOM</div>
+            <div class="font-weight-black headline shrink mt-1 secondary--text pr-5" contain min-width="100">MULTICOM</div>
         </div>                 
 
-        <div class="d-flex align-center" v-for="item in tabs" :key="item.name">  
-            <router-link :to="item.link" class="secondary--text pa-2" style="text-decoration: none;">
+        <div class="d-flex align-center " v-for="item in tabs" :key="item.name">  
+            <router-link :to="item.link" class="secondary--text pa-2 hidden-sm-and-down" style="text-decoration: none;">
                 <v-icon color="secondary" >
                     {{item.icon}}
                 </v-icon>
@@ -25,7 +25,7 @@
         
         <v-menu bottom rounded v-if="($global.token != null && $global.user != null)">
             <template v-slot:activator="{ on }">
-                <v-btn icon x-large v-on="on" >
+                <v-btn icon x-large v-on="on" class="hidden-sm-and-down">
                     <v-avatar size="48" > 
                         <span class="secondary--text headline">{{namenav}}</span>
                     </v-avatar>
@@ -38,7 +38,7 @@
                         <p class="caption mt-1"> {{$global.user.apellido}} </p>
                         <p class="caption mt-1"> {{$global.user.username}} </p>
                         <v-divider class="my-3"></v-divider>
-                        <v-btn depressed rounded text >
+                        <v-btn depressed rounded text @click="profile">
                             Editar datos
                         </v-btn> 
                         <v-btn depressed rounded text @click="close">
@@ -49,5 +49,6 @@
             </v-card>
         </v-menu>  
     </v-app-bar>
+    
 </template>
 <script src="./navBar.js"></script>

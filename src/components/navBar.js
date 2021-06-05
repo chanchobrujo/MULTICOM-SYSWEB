@@ -1,10 +1,10 @@
-import * as net from '../data/index'  
+import * as net from '../data/index'   
 
-export default {
+export default{
     name: 'NavBar', 
     data: () => ({
         tabs: [],
-        namenav: 'fg',
+        namenav: '', 
     }),
     created: function(){
         if (this.$global.token != null && this.$global.user != null){
@@ -15,18 +15,18 @@ export default {
                 { name: "Usuarios",  link: "/Usuarios", icon: "mdi-account" })
             this.nameForDashBoard()
         }
-    },
-    mounted(){
-        
-    },
+    }, 
     methods:{
-        async close(){
+        close(){
             net.closeSession()
+        },
+        profile(){
+            net.redirectPage("/Perfil")
         },
         nameForDashBoard(){
             var f = this.$global.user.nombre.charAt(0)
             var l = this.$global.user.apellido.charAt(0)
             this.namenav = f+l
         }
-    }, 
+    },  
 }
