@@ -1,5 +1,5 @@
 <template>
-    <v-container fluid class="fill-width">
+    <v-container fluid class="fill-width" v-if="$global.isRender"> 
         <form @submit.prevent="save">
             <v-card width="400" class="pa-3 mx-auto mt-9" elevation="9">
                 <v-card-title>Gestion</v-card-title>

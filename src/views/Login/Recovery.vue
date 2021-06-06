@@ -1,5 +1,5 @@
 <template>
-    <v-container class="fill-width" fluid v-if="($global.token == null || $global.user == null)"> 
+    <v-container class="fill-width" fluid v-if="$global.noRender"> 
         <form @submit.prevent="recovery">
             <v-card width="400" class="pa-3 mx-auto mt-9" elevation="9" >
                 <v-card-title>Recuperar contraseña</v-card-title> 

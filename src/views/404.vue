@@ -1,6 +1,7 @@
 <template>
     <v-container> 
-        <h1 class="font-weight-black headline secondary--text pa-3" >404</h1>
-        <h4 class="primary--text pa-3">Pagina no encontrada.</h4>
+        <center>
+            <img src="../assets/404.png" width="60%">
+        </center>
     </v-container>
 </template>

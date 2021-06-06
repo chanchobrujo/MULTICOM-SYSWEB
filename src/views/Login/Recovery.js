@@ -35,5 +35,9 @@ export default {
                 this.viewalert = true 
             } 
         }
-    }
+    },
+    created: function () { 
+        if ($global.isRender) net.redirectPage("/MisCitas")   
+        if ($global.noRender) return 
+    } 
 }

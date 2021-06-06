@@ -63,6 +63,10 @@ Vue.use({
             value: {
                 token: global.getToken,
                 user: global.getUser,  
+                avatar: global.nameAvatar,  
+                items: global.itemsNav,  
+                isrender: global.isRender,   
+                norender: global.noRender,   
             }, 
         })
     }

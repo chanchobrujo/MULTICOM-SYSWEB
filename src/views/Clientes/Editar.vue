@@ -1,6 +1,6 @@
 <template>
     <v-container v-if="view">
-        <form @submit.prevent="save" v-if="($global.token != null && $global.user != null)">
+        <form @submit.prevent="save" v-if="$global.isRender"> 
             <v-card width="400" class="pa-3 mx-auto mt-9" elevation="9">
                 <v-card-title>Editar un cliente</v-card-title>
                 <v-card-text>

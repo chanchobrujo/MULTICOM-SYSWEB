@@ -23,11 +23,11 @@ export default{
             return this.$validator.value(value).required();
         }, 
         'horaFin'(value){
-            return this.$validator.value(value).required();
+            return this.$validator.value(value).required(); 
         }, 
     },
     created: function () {
-        if (this.$global.token == null || this.$global.user == null) net.redirectPage("/Login") 
+        if ($global.noRender) net.redirectPage("/Login") 
         else this.listarClientes()
     },
     mounted(){ 

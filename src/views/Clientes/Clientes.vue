@@ -1,5 +1,5 @@
 <template>
-    <v-container fluid v-if="!($global.token == null || $global.user == null)">
+    <v-container fluid v-if="$global.isRender"> 
         <v-data-iterator :items="items" :items-per-page.sync="itemsPerPage" :page.sync="page" :search="search"  hide-default-footer >
             <template v-slot:header>
                 <v-toolbar dark color="primary" class="mb-1"  >

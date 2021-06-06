@@ -36,9 +36,9 @@ export default {
         }, 
 
     }, 
-    created: function () {
-        if (this.$global.token != null && this.$global.user != null) net.redirectPage("/MisCitas")   
-        if (this.$global.token == null || this.$global.user == null) return 
+    created: function () { 
+        if ($global.isRender) net.redirectPage("/MisCitas")   
+        if ($global.noRender) return 
     } 
 }               
 
