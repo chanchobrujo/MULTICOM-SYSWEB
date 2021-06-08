@@ -1,5 +1,5 @@
 <template>
-    <v-container fluid v-if="$global.isRender"> 
+    <v-container fluid v-if="$global.isrender"> 
         <v-row no-gutters>
             <v-col cols="12" sm="5" >
                 <v-card class="pa-2 ma-3">

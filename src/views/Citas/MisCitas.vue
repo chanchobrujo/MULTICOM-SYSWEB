@@ -1,5 +1,5 @@
 <template>
-    <v-container fluid v-if="$global.isRender">
+    <v-container fluid v-if="$global.isrender">
         Mis citas
     </v-container>
 </template>

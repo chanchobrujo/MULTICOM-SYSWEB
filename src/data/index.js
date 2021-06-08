@@ -22,14 +22,28 @@ class Global{
         }
     }
     get itemsNav(){
-        const items = []
-        if (this.user != null && this.token != null) {
-            items.push({ name: "MisCitas",   link: "/MisCitas",   icon: "mdi-clipboard-file" }, 
-            { name: "CrearCitas", link: "/CrearCitas", icon: "mdi-file-edit-outline" }, 
-            { name: "Clientes",   link: "/Clientes",   icon: "mdi-account-group-outline" }, 
-            { name: "Usuarios",   link: "/Usuarios",   icon: "mdi-account" })
+        try {
+            const items = []
+            const authorities = this.user.authorities 
+
+            let authority = false 
+
+            if(this.token != null && this.user != null)
+                for (let index = 0; index < authorities.length; index++) if ( authorities[index].authority == "ROLE_ADMIN" ) authority = true
+            
+            if (this.token != null && this.user != null) 
+                items.push(
+                { name: "MisCitas",   link: "/MisCitas",   icon: "mdi-clipboard-file" }, 
+                { name: "CrearCitas", link: "/CrearCitas", icon: "mdi-file-edit-outline" }, 
+                { name: "Clientes",   link: "/Clientes",   icon: "mdi-account-group-outline" },) 
+
+            if (this.token != null && this.user != null && authority == true) 
+                items.push({ name: "Usuarios",   link: "/Usuarios",   icon: "mdi-account" }) 
+            
+            return items
+        } catch (error) { 
+            return null
         }
-        return items
     }
     get isRender(){
         if (this.token != null && this.user != null) return true

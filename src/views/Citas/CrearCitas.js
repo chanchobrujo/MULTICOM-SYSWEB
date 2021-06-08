@@ -27,12 +27,9 @@ export default{
         }, 
     },
     created: function () {
-        if ($global.noRender) net.redirectPage("/Login") 
+        if (this.$global.norender) net.redirectPage("/Login") 
         else this.listarClientes()
-    },
-    mounted(){ 
-
-    },
+    }, 
     methods:{
         async save(){ 
             const _await = await this.$validate() 

@@ -37,7 +37,7 @@ export default {
         }
     },
     created: function () { 
-        if ($global.isRender) net.redirectPage("/MisCitas")   
-        if ($global.noRender) return 
+        if (this.$global.isRender) net.redirectPage("/MisCitas")   
+        if (this.$global.noRender) return 
     } 
 }

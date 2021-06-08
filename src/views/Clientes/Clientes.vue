@@ -1,5 +1,5 @@
 <template>
-    <v-container fluid v-if="$global.isRender"> 
+    <v-container fluid v-if="$global.isrender"> 
         <v-data-iterator :items="items" :items-per-page.sync="itemsPerPage" :page.sync="page" :search="search"  hide-default-footer >
             <template v-slot:header>
                 <v-toolbar dark color="primary" class="mb-1"  >
@@ -84,8 +84,13 @@
                 </v-row>
             </template>
         </v-data-iterator>
-        <v-snackbar v-model="showMsg" timeout="2000" >
-            {{ message }} 
+        <v-snackbar v-model="showMsg" timeout="40000" shaped color="primary">
+            <h3 class="secondary--text">{{ message }}</h3>
+            <template v-slot:action="{ attrs }">
+                <v-btn color="secondary" v-bind="attrs" text @click="showMsg = false">
+                    Cerrar
+                </v-btn>
+            </template>
         </v-snackbar>
     </v-container>
 </template>

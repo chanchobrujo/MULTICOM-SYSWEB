@@ -1,13 +1,13 @@
 <template>
     <v-app>  
-        <v-navigation-drawer  v-model="drawer" absolute temporary v-if="($global.token != null && $global.user != null)">
+        <v-navigation-drawer  v-model="drawer" absolute temporary v-if="$global.isrender" >
             <profile/>
         </v-navigation-drawer>
         
         <navbar/>
             
         <v-main>
-            <v-app-bar-nav-icon @click="drawer = true" v-if="($global.token != null && $global.user != null)"></v-app-bar-nav-icon>
+            <v-app-bar-nav-icon @click="drawer = true" v-if="$global.isrender" ></v-app-bar-nav-icon>
             <router-view/> 
         </v-main> 
 

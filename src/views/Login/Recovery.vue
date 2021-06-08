@@ -1,5 +1,5 @@
 <template>
-    <v-container class="fill-width" fluid v-if="$global.noRender"> 
+    <v-container class="fill-width" fluid v-if="$global.norender"> 
         <form @submit.prevent="recovery">
             <v-card width="400" class="pa-3 mx-auto mt-9" elevation="9" >
                 <v-card-title>Recuperar contraseña</v-card-title> 
@@ -20,7 +20,7 @@
                         </v-btn> 
                     </router-link>
                 </v-card-actions> 
-                <v-alert v-model="viewalert" border="right" :color="viewcolor" dense :icon="viewicon" text dismissible>
+                <v-alert v-model="viewalert" :color="viewcolor" :icon="viewicon" border="right" dense text dismissible>
                     {{message}}
                 </v-alert>
             </v-card>

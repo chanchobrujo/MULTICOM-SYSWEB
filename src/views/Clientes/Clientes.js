@@ -31,7 +31,7 @@ export default{
         },  
     },
     created: function () {
-        if ($global.noRender) net.redirectPage("/Login") 
+        if (this.$global.norender) net.redirectPage("/Login") 
         else this._list() 
     },
     methods: {

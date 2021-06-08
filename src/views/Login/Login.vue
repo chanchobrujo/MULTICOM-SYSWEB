@@ -1,5 +1,5 @@
 <template> 
-    <v-container class="fill-width" fluid v-if="$global.noRender">  
+    <v-container class="fill-width" fluid v-if="$global.norender">  
         <form @submit.prevent="login">
             <v-card width="400" class="pa-3 mx-auto mt-9" elevation="9" >
                 <v-card-title>Inicio de sesión</v-card-title>
