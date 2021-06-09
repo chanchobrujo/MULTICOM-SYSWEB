@@ -7,6 +7,7 @@ export default{
             fecha: new Date().toISOString().substr(0, 10), 
             horaInicio: null, 
             horaFin: null, 
+            propocito: '',
 
             showMsg: false, 
             viewcolor: 'green',
@@ -35,13 +36,10 @@ export default{
             const _await = await this.$validate() 
             if (!_await) return
             
-            for (let index = 0; index < this.select.length; index++) this.clientID.push( this.select[ index ].id )
-
-            console.log("Hola...");
-            console.log(this.clientID);
+            for (let index = 0; index < this.select.length; index++) this.clientID.push( this.select[ index ].id )  
 
             try {
-                const res = await this.axios.post('/Reservation/create',{ fecha: this.fecha, horaInicio: this.horaInicio, horaFin: this.horaFin, estado: "En proceso.", idusuario: this.$global.user.id, clientes: this.clientID })
+                const res = await this.axios.post('/Reservation/create',{ fecha: this.fecha, horaInicio: this.horaInicio, horaFin: this.horaFin, estado: "En proceso.",propocito: this.propocito, idusuario: this.$global.user.id, clientes: this.clientID })
 
                 this.showMsg = true
                 this.message = res.data.mensaje
@@ -55,7 +53,8 @@ export default{
                 this.message = error.response.data.mensaje  
             } finally{
                 this.listarClientes()
-                this.select.splice(0, 2)
+                //this.select.splice(0, 2)
+                this.select.splice(0, this.select.length)
             }
 
         },

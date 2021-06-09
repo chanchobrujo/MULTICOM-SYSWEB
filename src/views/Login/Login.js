@@ -7,7 +7,8 @@ export default {
             passw: '',
             viewalert: false,
             viewcolor: 'red',
-            viewicon: 'mdi-alert',  
+            viewicon: 'mdi-alert', 
+            showpassword: false, 
             message: '',  
         }
     },  

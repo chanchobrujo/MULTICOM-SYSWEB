@@ -6,7 +6,7 @@
                     <span class="primary--text text-h1">{{$global.avatar}}</span>
                 </v-avatar>
             </v-col>  
-            <v-col cols="12" sm="5" >
+            <v-col cols="12" sm="4" >
                 <v-simple-table>
                     <template v-slot:default>
                         <tr>
@@ -54,10 +54,10 @@
                     </template>
                 </v-simple-table> 
             </v-col>
-            <v-col cols="12" sm="4" >
-                <form @submit.prevent="updatePassword"> 
-                    <v-simple-table>
-                        <template v-slot:default>
+            <v-col cols="12" sm="5" >
+                <v-card elevation="5" class="pa-2">
+                    <form @submit.prevent="updatePassword">  
+                        <v-simple-table> 
                             <thead>
                                 <th class="pb-5">Cambio de contraseña</th>
                                 <th class="pb-5">
@@ -67,11 +67,25 @@
                                 </th>
                             </thead>
                             <tr>
+                                <td colspan="2">
+                                    <v-card-text>
+                                        <v-alert border="left" colored-border color="secondary" elevation="2" >
+                                            Su sesión acabará cuando su contraseña se actualize correctamente.
+                                        </v-alert> 
+                                    </v-card-text>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <hr>
+                                </td>
+                            </tr>
+                            <tr>
                                 <th class="text-left pb-5">
                                     Contraseña antigua:
                                 </th> 
                                 <td class="text-left pb-5"> 
-                                    <v-text-field v-model="oldpassword" type="password" ></v-text-field> 
+                                    <v-text-field v-model="oldpassword"  :append-icon="showpassword ? 'mdi-eye' : 'mdi-eye-off'" :type="showpassword ? 'text' : 'password'" @click:append="showpassword = !showpassword" ></v-text-field> 
                                     <span class="red--text">{{validation.firstError('oldpassword')}}</span>
                                 </td> 
                             </tr> 
@@ -80,16 +94,16 @@
                                     Nueva contraseña:
                                 </th> 
                                 <td class="text-left pb-5">  
-                                    <v-text-field v-model="newpassword" type="password" ></v-text-field> 
+                                    <v-text-field v-model="newpassword"  :append-icon="showpassword1 ? 'mdi-eye' : 'mdi-eye-off'" :type="showpassword1 ? 'text' : 'password'" @click:append="showpassword1 = !showpassword1" ></v-text-field> 
                                     <span class="red--text">{{validation.firstError('newpassword')}}</span>
                                 </td> 
                             </tr> 
                             <tr>
                                 <th class="text-left pb-5">
-                                    Confirmar contraseña:
+                                                    Confirmar contraseña:
                                 </th> 
                                 <td class="text-left pb-5">  
-                                    <v-text-field v-model="confpassword" type="password" ></v-text-field>
+                                    <v-text-field v-model="confpassword"  :append-icon="showpassword2 ? 'mdi-eye' : 'mdi-eye-off'" :type="showpassword2 ? 'text' : 'password'" @click:append="showpassword2 = !showpassword2" ></v-text-field>
                                     <span class="red--text">{{validation.firstError('confpassword')}}</span>
                                 </td> 
                             </tr> 
@@ -100,9 +114,9 @@
                                     </v-alert> 
                                 </td> 
                             </tr>
-                        </template>
-                    </v-simple-table> 
-                </form>
+                        </v-simple-table>
+                    </form>
+                </v-card>
             </v-col>
         </v-row> 
     </v-container>

@@ -6,7 +6,7 @@
                 <v-card-text>
                     <v-text-field v-model="email" label="Correo" prepend-icon="mdi-email" ></v-text-field> 
                     <span class="red--text">{{validation.firstError('email')}}</span>
-                    <v-text-field v-model="passw" label="Contraseña" prepend-icon="mdi-lock" type="password"></v-text-field> 
+                    <v-text-field v-model="passw" :append-icon="showpassword ? 'mdi-eye' : 'mdi-eye-off'" :type="showpassword ? 'text' : 'password'" @click:append="showpassword = !showpassword" label="Contraseña" prepend-icon="mdi-lock" ></v-text-field> 
                     <span class="red--text">{{validation.firstError('passw')}}</span>
                 </v-card-text>
                 <v-card-actions>

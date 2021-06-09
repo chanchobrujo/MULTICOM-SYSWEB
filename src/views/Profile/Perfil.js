@@ -8,8 +8,12 @@ export default {
 
             message: '',
             showMessage: false,
-            iconMessage: false,
-            colorMessage: false,
+            iconMessage: 'mdi-check',
+            colorMessage: 'green',
+
+            showpassword: false,
+            showpassword1: false,
+            showpassword2: false,
 
             oldpassword: '',
             newpassword: '',

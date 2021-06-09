@@ -1,7 +1,10 @@
 <template>                     
     <v-app-bar app color="primary" dark dense>
         <div class="d-flex align-center" >
-            <v-img alt="Vuetify Logo" class="shrink mr-2" contain src="../assets/logo.png" transition="scale-transition" width="40" /> 
+            <router-link :to="{name: 'Inicio' }" style="text-decoration: none;" >
+                <v-img alt="Vuetify Logo" class="shrink mr-2" contain src="../assets/logo.png" transition="scale-transition" width="40" /> 
+            </router-link>
+            
             <div class="font-weight-black headline shrink mt-1 secondary--text pr-5" contain min-width="100">MULTICOM</div>
         </div>                 
 
