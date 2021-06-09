@@ -6,13 +6,18 @@ export default {
             color: '',
             role: '',
 
-            password: '',
+            message: '',
+            showMessage: false,
+            iconMessage: false,
+            colorMessage: false,
+
+            oldpassword: '',
             newpassword: '',
             confpassword: ''
         }
     },  
     validators:{
-        'password'(value){
+        'oldpassword'(value){
             return this.$validator.value(value).required()
         }, 
         'newpassword'(value){
@@ -45,7 +50,21 @@ export default {
             const _await = await this.$validate()
             if (!_await) return 
 
-            alert()
+            
+
+            try {
+                const res = await this.axios.post('/Update/Password/'+ this.$global.user.id,{ oldPassword: this.oldpassword,  newPassword: this.newpassword,  confirmPassword: this.confpassword })   
+                this.showMessage = true 
+                this.colorMessage = 'green'
+                this.iconMessage = 'mdi-check' 
+                this.message = res.data.mensaje   
+                net.closeSession()
+            } catch (error) {
+                this.showMessage = true 
+                this.colorMessage = 'red'
+                this.iconMessage = 'mdi-alert' 
+                this.message = error.response.data.mensaje 
+            }
         }
     }
 }

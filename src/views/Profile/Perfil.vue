@@ -71,8 +71,8 @@
                                     Contraseña antigua:
                                 </th> 
                                 <td class="text-left pb-5"> 
-                                    <v-text-field v-model="password" type="password" ></v-text-field> 
-                                    <span class="red--text">{{validation.firstError('password')}}</span>
+                                    <v-text-field v-model="oldpassword" type="password" ></v-text-field> 
+                                    <span class="red--text">{{validation.firstError('oldpassword')}}</span>
                                 </td> 
                             </tr> 
                             <tr>
@@ -80,7 +80,7 @@
                                     Nueva contraseña:
                                 </th> 
                                 <td class="text-left pb-5">  
-                                    <v-text-field v-model="newpassword" type="newpassword" ></v-text-field> 
+                                    <v-text-field v-model="newpassword" type="password" ></v-text-field> 
                                     <span class="red--text">{{validation.firstError('newpassword')}}</span>
                                 </td> 
                             </tr> 
@@ -89,13 +89,15 @@
                                     Confirmar contraseña:
                                 </th> 
                                 <td class="text-left pb-5">  
-                                    <v-text-field v-model="confpassword" type="confpassword" ></v-text-field>
+                                    <v-text-field v-model="confpassword" type="password" ></v-text-field>
                                     <span class="red--text">{{validation.firstError('confpassword')}}</span>
                                 </td> 
                             </tr> 
                             <tr>
                                 <td colspan="2">
-                                    <v-alert type="success" border="left" elevation="2" dense text dismissible ></v-alert> 
+                                    <v-alert v-model="showMessage" :icon="iconMessage" :color="colorMessage" border="left" elevation="2" dense text dismissible >
+                                        {{message}}
+                                    </v-alert> 
                                 </td> 
                             </tr>
                         </template>
