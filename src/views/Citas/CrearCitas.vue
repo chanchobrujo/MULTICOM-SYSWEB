@@ -7,7 +7,7 @@
                         Clientes  
                         <v-chip-group column>
                             <v-chip v-for="obj in select" :key="obj.nombre" >
-                                {{ obj.nombre }}
+                                {{ obj.nombre }} 
                                 <v-btn text small @click="remove(obj)">
                                     <v-icon>
                                         mdi-minus
@@ -80,8 +80,8 @@
                                     <v-text-field v-model="horaFin" label="Seleccione hora de fin" type="time" ></v-text-field> 
                                     <span class="red--text">{{validation.firstError('horaFin')}}</span> 
                                     
-                                    <v-textarea v-model="propocito" name="input-7-1" label="Propósito"  hint="..." ></v-textarea>
-    
+                                    <v-textarea v-model="propocito" name="input-7-1" label="Propósito" hint="..." ></v-textarea>
+                                    <span class="red--text">{{validation.firstError('propocito')}}</span> 
                                 </v-col>
                                 <v-col cols="12" sm="8" >
                                     <v-date-picker locale="es" class="pa-2" v-model="fecha" :min="hoy" :show-current="false" full-width></v-date-picker>

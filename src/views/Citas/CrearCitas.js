@@ -26,6 +26,9 @@ export default{
         'horaFin'(value){
             return this.$validator.value(value).required(); 
         }, 
+        'propocito'(value){
+            return this.$validator.value(value).required(); 
+        }, 
     },
     created: function () {
         if (this.$global.norender) net.redirectPage("/Login") 

@@ -11,7 +11,7 @@
                         <v-btn-toggle >
                             <router-link to="/Clientes/Registrar" style="text-decoration: none;" >
                                 <v-btn large color="primary" dark>
-                                    <v-icon>mdi-plus</v-icon>
+                                    <v-icon class="secondary--text">mdi-plus</v-icon>
                                 </v-btn> 
                             </router-link>
                         </v-btn-toggle>
@@ -22,7 +22,7 @@
             <template v-slot:default="props" >
                 <v-row>
                     <v-col v-for="item in props.items" :key="item.nombre" class="mt-5" cols="12" sm="6" md="4" lg="3" >
-                        <v-card elevation="9">
+                        <v-card elevation="9" shaped>
                             <v-card-title class="subheading font-weight-bold">
                                 {{ item.nombre + " " + item.apellido }}
                             </v-card-title> 
@@ -39,7 +39,7 @@
                             </v-list>
                             <v-divider></v-divider> 
                             <v-card-actions>
-                                <router-link :to="{name: 'Editar', params: {id: item.id}}" style="text-decoration: none;" >
+                                <router-link :to="{name: 'EditarClientes', params: {id: item.id}}" style="text-decoration: none;" >
                                     <v-btn text color="secondary">
                                         Editar
                                     </v-btn>

@@ -12,11 +12,11 @@ class Global{
     }
     get nameAvatar(){  
         try {
-            
+                        
             var na = this.user.nombre.charAt(0)
             var nb = this.user.apellido.charAt(0)
-            return na+nb
-            
+            return na + nb
+                        
         } catch (error) {
             return ""
         }
@@ -33,12 +33,12 @@ class Global{
             
             if (this.token != null && this.user != null) 
                 items.push(
-                { name: "MisCitas",   link: "/MisCitas",   icon: "mdi-clipboard-file" }, 
-                { name: "CrearCitas", link: "/CrearCitas", icon: "mdi-file-edit-outline" }, 
-                { name: "Clientes",   link: "/Clientes",   icon: "mdi-account-group-outline" },) 
+                { name: "Citas empresariales", link: "/MisCitas", icon: "mdi-clipboard-file" }, 
+                { name: "Crear una cita", link: "/CrearCitas", icon: "mdi-file-edit-outline" }, 
+                { name: "Administación de clientes", link: "/Clientes", icon: "mdi-account-group-outline" },) 
 
             if (this.token != null && this.user != null && authority == true) 
-                items.push({ name: "Usuarios",   link: "/Usuarios",   icon: "mdi-account" }) 
+                items.push({ name: "Administación de usuarios", link: "/Usuarios", icon: "mdi-account" }) 
             
             return items
         } catch (error) { 

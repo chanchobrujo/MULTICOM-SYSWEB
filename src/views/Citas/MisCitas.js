@@ -16,7 +16,7 @@ export default{
                 const res = await this.axios.get('/Reservation/')
                 this.reservations = res.data
             } catch (error) {
-                console.log( error.response.data );//.mensaje 
+                console.log( error.response.data ); 
             }
         }
     }
