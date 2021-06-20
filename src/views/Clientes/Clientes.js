@@ -16,10 +16,10 @@ export default{
                 'email' 
             ],
             items: [],
-            message: '',
             
             _id: '',
             showMsg: false, 
+            message: '',
         }
     },
     computed: {
@@ -55,13 +55,13 @@ export default{
         async _delete(id){ 
             try { 
                 const res = await this.axios.delete('/client/delete/'+id) 
-                this.message = res.data.mensaje 
-                this._list()
+                this.message = res.data.mensaje  
             } catch (error) { 
                 this.message = error.response.data.mensaje  
             }finally{ 
+                this._list()
                 this.showMsg = true 
-            }
+            } 
             
         }
     } 

@@ -35,17 +35,23 @@
                                     <v-list-item-content class="align-end" :class="{ 'font-weight-black primary--text': sortBy === key }" >
                                         {{ item[key.toLowerCase()] }} 
                                     </v-list-item-content> 
+                                    
                                 </v-list-item> 
-                            </v-list>
-                            <v-divider></v-divider> 
-                            <v-card-actions>
-                                <router-link :to="{name: 'Editar', params: {id: item.id}}" style="text-decoration: none;" >
-                                    <v-btn text color="secondary">
-                                        Editar
+                                
+                                <div class="pl-4">
+                                    <v-btn text>
+                                        {{item.roles[0].rolNombre}}
                                     </v-btn>
-                                </router-link> 
-                                <v-btn text color="error" @click="_delete(item.id)" >
-                                    Eliminar
+                                </div>
+                            </v-list>
+                                    
+                            <v-divider></v-divider> 
+                            <v-card-actions> 
+                                <v-btn color="red" class="white--text" v-if="item.estado" @click="_ChangeState(item.id)">
+                                    <h3>Dar de baja</h3>
+                                </v-btn> 
+                                <v-btn color="blue" class="white--text" v-else @click="_ChangeState(item.id)">
+                                    Dar de alta
                                 </v-btn> 
                                 <v-btn v-if="item.estado == false" text color="red"> 
                                     INACTIVO
@@ -90,6 +96,14 @@
                 </v-row>
             </template>
         </v-data-iterator>
+        <v-snackbar v-model="showMsg" timeout="40000" shaped color="primary">
+            <h3 class="secondary--text">{{ message }}</h3>
+            <template v-slot:action="{ attrs }">
+                <v-btn color="secondary" v-bind="attrs" text @click="showMsg = false">
+                    Cerrar
+                </v-btn>
+            </template>
+        </v-snackbar>
     </v-container>
 </template>
 <script src="./Usuarios.js"></script>

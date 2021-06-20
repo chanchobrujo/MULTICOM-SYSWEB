@@ -40,12 +40,12 @@ export default {
             const ROLE = {
                 'ROLE_ADMIN': 'Administrador',
                 'ROLE_MOD': 'Moderador',
-                'CLIENTE': 'Cliente',
+                'ROLE_CLIENTE': 'Cliente',
             }
             const COLOR = {
                 'ROLE_ADMIN': 'red',
                 'ROLE_MOD': 'green',
-                'CLIENTE': 'blue',
+                'ROLE_CLIENTE': 'blue',
             }
             this.role = ROLE[ this.$global.user.authorities[0].authority ] 
             this.color = COLOR[ this.$global.user.authorities[0].authority ] 

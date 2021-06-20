@@ -10,16 +10,16 @@ export default{
             itemsPerPage: 4,
             sortBy: 'name',
             keys: [
-                'nombre',
-                'apellido',
-                'numero',
-                'email'    
+                'Nombre',
+                'Apellido',
+                'Numero',
+                'Email'    
             ],
             items: [],
-            message: '',
             
             _id: '',
             showMsg: false, 
+            message: '',
         }
     },
     computed: {
@@ -46,12 +46,22 @@ export default{
         },
         async _list(){
             try {
-                const res = await this.axios.get('/Users/Excep/'+this.$global.user.id )  
-
+                const res = await this.axios.get('/Users/Excep/'+this.$global.user.id )   
                 this.items = res.data   
             } catch (error) {
                 this.message = error.response.data.mensaje 
             }
         },
+        async _ChangeState(id){
+            try{ 
+                const res = await this.axios.put('/Users/State/'+id )  
+                this.message = res.data.mensaje  
+            } catch (error) {
+                this.message = error.response.data.mensaje  
+            }finally{ 
+                this._list()
+                this.showMsg = true 
+            } 
+        }
     }
 }
