@@ -1,43 +1,51 @@
-import * as net from '../../data/index.js'  
+import * as net from "../../data/index.js";
 
 export default {
-    data(){
-        return{
-            email: '', 
-            message: '', 
-            
-            viewalert: false,
-            viewcolor: 'red',
-            viewicon: 'mdi-alert',  
-        }
-    }, 
-    validators:{
-        'email'(value){
-            return this.$validator.value(value).required().email();
-        }, 
-    },
-    methods: {
-        async recovery(){
-            const _await = await this.$validate()
-            if (!_await) return 
+	data() {
+		return {
+			email: "",
+			message: "",
+			loading: false,
 
-            try { 
+			viewalert: false,
+			viewcolor: "red",
+			viewicon: "mdi-alert",
+		};
+	},
+	validators: {
+		email(value) {
+			return this.$validator
+				.value(value)
+				.required()
+				.email();
+		},
+	},
+	methods: {
+		async recovery() {
+			const _await = await this.$validate();
+			if (!_await) return;
+			this.loading = true;
 
-                const res = await this.axios.post('/recovery/password',{email: this.email}) 
+			try {
+				const res = await this.axios.post(
+					"/recovery/password",
+					{ email: this.email },
+				);
 
-                this.viewcolor = 'green'
-                this.viewicon = 'mdi-email-check '
-                this.message = res.data.mensaje 
-                this.viewalert = true 
-
-            } catch (error) { 
-                this.message = error.response.data.mensaje 
-                this.viewalert = true 
-            } 
-        }
-    },
-    created: function () { 
-        if (this.$global.isRender) net.redirectPage("/MisCitas")   
-        if (this.$global.noRender) return 
-    } 
-}
+				this.viewcolor = "green";
+				this.viewicon = "mdi-email-check ";
+				this.message = res.data.mensaje;
+				this.viewalert = true;
+			} catch (error) {
+				this.message = error.response.data.mensaje;
+				this.viewalert = true;
+			} finally {
+				this.loading = false;
+			}
+		},
+	},
+	created: function() {
+		if (this.$global.isrender) net.navigationPage("");
+		if (this.$global.norender) return;
+	},
+};

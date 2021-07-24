@@ -1,81 +1,91 @@
-import * as net from '../../data/index'  
+import * as net from "../../data/index";
 
-export default{
-    data(){
-        return{
-            hoy: new Date().toISOString().substr(0, 10),
-            fecha: new Date().toISOString().substr(0, 10), 
-            horaInicio: null, 
-            horaFin: null, 
-            propocito: '',
+export default {
+	data() {
+		return {
+			hoy: new Date().toISOString().substr(0, 10),
+			fecha: new Date().toISOString().substr(0, 10),
+			horaInicio: null,
+			horaFin: null,
+			propocito: "",
 
-            showMsg: false, 
-            viewcolor: 'green',
-            viewicon: 'mdi-check', 
-            message: '',
-            
-            list: [],
-            select: [],
-            clientID: [] 
-        }
-    },
-    validators:{
-        'horaInicio'(value){
-            return this.$validator.value(value).required();
-        }, 
-        'horaFin'(value){
-            return this.$validator.value(value).required(); 
-        }, 
-        'propocito'(value){
-            return this.$validator.value(value).required(); 
-        }, 
-    },
-    created: function () {
-        if (this.$global.norender) net.redirectPage("/Login") 
-        else this.listarClientes()
-    }, 
-    methods:{
-        async save(){ 
-            const _await = await this.$validate() 
-            if (!_await) return
-            
-            for (let index = 0; index < this.select.length; index++) this.clientID.push( this.select[ index ].id )  
+			showMsg: false,
+			viewcolor: "green",
+			viewicon: "mdi-check",
+			message: "",
 
-            try {
-                const res = await this.axios.post('/Reservation/create',{ fecha: this.fecha, horaInicio: this.horaInicio, horaFin: this.horaFin, estado: "En proceso.",propocito: this.propocito, idusuario: this.$global.user.id, clientes: this.clientID })
+			list: [],
+			select: [],
+			clientID: [],
+		};
+	},
+	validators: {
+		horaInicio(value) {
+			return this.$validator.value(value).required();
+		},
+		horaFin(value) {
+			return this.$validator.value(value).required();
+		},
+		propocito(value) {
+			return this.$validator.value(value).required();
+		},
+	},
+	created: function() {
+		if (this.$global.norender) net.navigationPage("Login");
+		else this.listarClientes();
+	},
+	methods: {
+		async save() {
+			const _await = await this.$validate();
+			if (!_await) return;
 
-                this.showMsg = true
-                this.message = res.data.mensaje
-                
-                this.viewcolor = 'green'
-                this.viewicon = 'mdi-check'
-            } catch (error) { 
-                this.showMsg = true
-                this.viewicon = 'mdi-block-helper'
-                this.viewcolor = 'red'
-                this.message = error.response.data.mensaje  
-            } finally{
-                this.listarClientes()
-                //this.select.splice(0, 2)
-                this.select.splice(0, this.select.length)
-            }
+			for (let index = 0; index < this.select.length; index++)
+				this.clientID.push(this.select[index].id);
 
-        },
-        async listarClientes(){ 
-            const res = await this.axios.get('/client/') 
-            this.list = res.data 
-        },
-        add( item ){
-            var index = this.list.indexOf(item)
-            
-            this.select.push( item )        
-            this.list.splice( index , 1 )               
-        },
-        remove( item ){
-            var index = this.select.indexOf(item)   
-            
-            this.list.push( item )   
-            this.select.splice( index , 1 )                     
-        }
-    }
-}
+			try {
+				const res = await this.axios.post(
+					"/Reservation/create",
+					{
+						fecha: this.fecha,
+						horaInicio: this.horaInicio,
+						horaFin: this.horaFin,
+						estado: "En proceso.",
+						propocito: this.propocito,
+						idusuario: this.$global.user.id,
+						clientes: this.clientID,
+					},
+				);
+
+				this.showMsg = true;
+				this.message = res.data.mensaje;
+
+				this.viewcolor = "green";
+				this.viewicon = "mdi-check";
+			} catch (error) {
+				this.showMsg = true;
+				this.viewicon = "mdi-block-helper";
+				this.viewcolor = "red";
+				this.message = error.response.data.mensaje;
+			} finally {
+				this.listarClientes();
+				this.select.splice(0, this.select.length);
+			}
+		},
+		async listarClientes() {
+			const res = await this.axios.get("/client/");
+			this.list = res.data;
+		},
+		add(item) {
+			var index = this.list.indexOf(item);
+
+			this.select.push(item);
+			this.list.splice(index, 1);
+		},
+		remove(item) {
+			var index = this.select.indexOf(item);
+
+			this.list.push(item);
+			this.select.splice(index, 1);
+		},
+	},
+};
